@@ -1,0 +1,63 @@
+---
+title: "换个角度看 JAVA"
+layout: post
+date: 2019-02-10 19:10
+tag:
+- JVM
+- OpenJDK
+category: JVM
+author: inotwant
+description: 深入理解 Java 虚拟机第一章阅读笔记
+---
+
+## Java 发展史
+
+write once, run anywhere.
+
+1. 1995, James Gosling, 发布 Java 1.0；
+2. 1996, JDK 1.0;
+3. 1997, JDK 1.1;
+4. 1998, JDK 1.2;（第一次内置了JIT编译器，每隔两年发布一个JDK的主版本）
+5. 2000, JDK 1.3;
+6. 2002, JDK 1.4;
+7. 2004, JDK 1.5;（泛型，注解，自动装箱，枚举，可变参数，增强循环）
+8. 2006, JDK 6;（使用新的版本命名方式，提供动态语言支持）
+9. 2011, JDK 7;（`Lambda` `Jigsaw` `Coin` 立项，但都跳票）
+10. 2013, JDK 8;（`Lambda` `Coin`）
+11. 2017, JDK 9;（`Jigsaw`）
+12. 2018.03, JDK 10;（每隔六个月发布一个主版本，使用基于时间定义的发布版本）
+13. 2018.09, JDK 11;
+
+附：
+- 针对不同的领域，各厂商定制或创造了多种不同的虚拟机。
+- JCP -> Java community process 
+- JSR -> Java specification requests
+
+## Java 新技术
+
+1. 模块化（`OSGi` or `Jigsaw`）
+2. 混合编程（动态语言的支持，从Java虚拟机到多语言虚拟机）
+3. 对多核并行的支持（API，编程方式（函数式）；单机并行，多机并行）
+4. 64位虚拟机的支持
+
+## 编译 openJDK9
+
+### 环境及资源
+
+- `ubuntu 16.04`
+- [openjdk](https://github.com/unofficial-openjdk/openjdk)
+- Bootstrap JDK -> `1.8.0_191"`
+
+### 步骤
+
+1. 解压 `openjdk9` 源码
+> `unzip *.zip`
+2. 使得 `configure` 可执行，然后执行此脚本
+> `chmod u+x ./configure`  
+> `./configure`  
+> 注：**根据提示缺什么，补什么。**(如下)
+>> `Could not find all X11 headers (shape.h Xrender.h XTest.h Intrinsic.h).
+apt-get install libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev`
+3.  开始编译
+> `make images`  
+> 时间比较长，请耐心等待。编译结果在 `build` 文件夹下。

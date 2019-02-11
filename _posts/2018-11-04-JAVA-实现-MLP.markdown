@@ -1,0 +1,68 @@
+---
+title: "JAVA 实现 MLP"
+layout: post
+date: 2018-11-04 17:20
+tag:
+- java
+- mlp
+category: machine learning
+author: inotwant
+description: 手写多层感知机
+---
+
+#### 1. 目标
+1. 自己实现一个全连接网络（即，`MLP`(多层感知机)），并最终能在 `MNIST` 数据集上取得 95% 左右的准确率；
+2. 熟悉 `BP`(反向传播的过程)；
+3. 熟悉 `BGD` `mini-BatchSGD` 过程；
+
+#### 2. 难点
+1. 上述的 **2** **3** 处有小坑（如果不细心的话）；
+2. **机器学习的调试不是代码的调试！**（后面再解释）；
+
+#### 3. How to do?
+- `Are you ok?` **code** 之前你真的准备好了吗？
+    - `MLP`
+        - 此处假设你对它已经有所了解。如果你之前没有接触过，建议先从 `Perceptron`（感知机）入手
+        - 这里只规范一下表示
+        ![MLP](https://raw.githubusercontent.com/INotWant/INotWant.github.io/master/assets/images/2018-11-04/1.png)
+    - `BP`
+        - 提起 **BP**，不得不说下面的四个公式（建议自己推导一遍）
+        ![BP](https://raw.githubusercontent.com/INotWant/INotWant.github.io/master/assets/images/2018-11-04/2.png)
+    - OK，理论就这么多，是不是很简单！    
+- 既然使用 `java`，那就来点面向对象的思想
+    - 这次 **面向对象** ，应该考虑什么呢？
+        1. 整个 `mlp` 中有几个对象？
+        2. 什么实体是可以扩展的？
+    - 我是这么设计的
+        1. 先看一下类图（`idea`自动生成的，组合关系没有显示出来）
+        ![类图](https://raw.githubusercontent.com/INotWant/INotWant.github.io/master/assets/images/2018-11-04/3.png)
+        2. `Layer.class`，描述的是层的概念，`mlp` 是由它搭建的
+        ![Layer.class](https://raw.githubusercontent.com/INotWant/INotWant.github.io/master/assets/images/2018-11-04/4.png)
+        3. `Net.class`，描述的整个全连接网络，其实它就是 `mlp`
+        ![Net.class](https://raw.githubusercontent.com/INotWant/INotWant.github.io/master/assets/images/2018-11-04/5.png)
+        4. `CostFunction.clss`，是个接口，它是 **代价函数** 的抽象，添加新的代价函数只需要实现它
+        ![CostFunction.clss](https://raw.githubusercontent.com/INotWant/INotWant.github.io/master/assets/images/2018-11-04/6.PNG)
+        5. `ActivationFunction.class`，是个接口，它是 **激活函数** 的抽象，尝试其他的激活函数只需要实现它
+        ![ActivationFunction.class](https://raw.githubusercontent.com/INotWant/INotWant.github.io/master/assets/images/2018-11-04/7.png)
+- 是不是已经迫不及待的想 **coding** 了？`OK Start!`
+    - [这是我的实现](https://download.csdn.net/download/kiss_xiaojie/10763707)
+- 测试
+    - 首先要确定测试方案。其实，在一开始就应该确定了，现在才确定有点违背 `软工`。毕竟 `just one, just paly` 无所谓了
+        1. 前面已经提到此处使用 `MNIST` 数据集，至于如何读取可以看看我的上一篇，这里不再赘述。
+        2. 这里的测试有两个目标：1）程序能跑通~~；2）能达到 95% 左右的准确率。
+    - 我的调试过程
+        1. 逻辑中涉及太多运算了，整个过程认认真真地，最终还是写错了一处下标。导致准确率为 9%（随机）。**1st failed**
+        2. 纠正后，准确率仍没很大变化，难道还有错误？开始质疑自己！然而也发现了新需求：如何快速查错？于是加入了 **日志逻辑**（实现的有点生硬，没有视为横切逻辑）。
+        3. 通过分析 **日志文件**，发现权重、偏置的改变过于规则化。于是，让它们进行随机初始化。然而，效果一般。**2nd failed**
+        4. 几近崩溃！崩溃！几近要放弃！放弃！**Why** 静下心来，查了许多资料。最终在使用 **mini-BatchSGD** 训练方式后达到预期效果。**++机器学习的调试不是代码的调试。。。++**
+- 还需要点什么（补充设计时遗漏的功能）
+    - 模型的持久化
+        1. 使用 `java` 的 `Serializable` 就可以轻而易举地实现
+    - 其他的暂时还没想到。。。
+
+#### 4. 远方
+- `What's the life?`
+- `What's the love?`
+- `Just do what you like.`
+- `Just do it`
+- `However, Some things don't just depend on you.`
