@@ -15,9 +15,9 @@ description: JVM 参数笔记
 3. `-XX:+HeapDumpOnOutOfMemoryError`	--> **设置内存溢出时 Dump 堆**
 4. `-Xss`	--> **设置栈容量**
 5. ~~`-Xoss`~~	--> **设置本地方法栈大小**
-6. `-XX:PermSize`	--> **设置 JVM 初始方法区的大小**
-7. `-XX:MaxPermSize`	--> **设置 JVM 方法区的最大大小**
-8. `-X:MaxDirectMemorySize`	--> **设置 JVM 本机直接内存的最大大小**
+6. ~~`-XX:PermSize`~~	--> **设置 JVM 初始方法区的大小，JDK1.7开始逐步去永久代**
+7. ~~`-XX:MaxPermSize`~~	--> **设置 JVM 方法区的最大大小，JDK1.7开始逐步去永久代**
+8. `-XX:MaxDirectMemorySize`	--> **设置 JVM 本机直接内存的最大大小**
 9. `-XX:+PrintGC` --> **输出GC日志**
 10. `-XX:+PrintGCDetails` --> **输出GC的详细日志**
 11. `-XX:+PrintGCTimeStamps` --> **输出GC的时间戳（以基准时间的形式）**
