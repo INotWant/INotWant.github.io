@@ -12,30 +12,32 @@ description: JVM 参数笔记
 
 1. `-Xms`	--> **设置 Java 堆最小值**
 2. `-Xmx`	--> **设置 Java 堆最大值**
-3. `-XX:+HeapDumpOnOutOfMemoryError`	--> **设置内存溢出时 Dump 堆**
-4. `-Xss`	--> **设置栈容量**
-5. ~~`-Xoss`~~	--> **设置本地方法栈大小**
-6. ~~`-XX:PermSize`~~	--> **设置 JVM 初始方法区的大小，JDK1.7开始逐步去永久代**
-7. ~~`-XX:MaxPermSize`~~	--> **设置 JVM 方法区的最大大小，JDK1.7开始逐步去永久代**
-8. `-XX:MaxDirectMemorySize`	--> **设置 JVM 本机直接内存的最大大小**
-9. `-XX:+PrintGC` --> **输出GC日志**
-10. `-XX:+PrintGCDetails` --> **输出GC的详细日志**
-11. `-XX:+PrintGCTimeStamps` --> **输出GC的时间戳（以基准时间的形式）**
-12. `-XX:+PrintGCDateStamps` --> **输出GC的时间戳（以日期的形式，如 2013-05-04T21:53:59.234+0800）**
-13. `-XX:+PrintHeapAtGC` --> **在进行GC的前后打印出堆的信息**
-14. `-XX:UseSerialGC` --> **使用 Serial + Serial Old 收集器组合**
-15. `-XX:UseParNewGC` --> **使用 ParNew + Serial Old 收集器组合**
-16. `-XX:UseConcMarkSweepGC` --> **使用 ParNew + CMS + Serial Old 收集器组合**
-17. `-XX:UseParallelGC` --> **使用 PS + Serial Old 收集器组合**
-18. `-XX:UseParallelOldGC` --> **使用 PS + PS Old 收集器组合**
-19. `-XX:SurvivorRatio` --> **设置 Eden 与 Survivor 比例，默认为8（指8:1）**
-20. `-XX:PretenureSizeThreshold` --> **直接晋升到老年代的对象大小（单位：字节）**
-21. `-XX:MaxTenuringThreshold` --> **晋升到老年代的对象年龄，默认15**
-22. `-XX:UseAdaptiveSizePolicy` --> **动态调整Java堆中各个区域的大小以及进入老年代的年龄**
-23. ~~`-XX:HandlePromotionFailure`~~ --> **设置是否允许分配担保失败**
-24. `-XX:ParallelGCThreads` --> **设置并行 GC 的线程数**
-25. `-XX:GCTimeRatio` --> **GC时间占总时间的比率，默认值为99，只在使用 PS 收集器时生效**
-26. `-XX:MaxGCPauseMillis` --> **设置GC的最大停顿时间，只在使用 PS 收集器时生效**
-27. `-XX:CMSInitiatingOccupancyFraction` --> **CMS收集器在老年代空间被使用多少后触发垃圾收集，默认值为68%，只在使用 CMS 收集器时生效**
-28. `-XX:UseCMSCompactAtFullCollection` --> **设置CMS收集器在完成垃圾收集后是否要进行一次内存碎片整理**
-29. `-XX:CMSFullGCsBeforeCompaction` --> **设置CMS收集器在进行若干此垃圾收集后再启动一次内存碎片整理**
+3. `-Xmn` --> **设置新生代的大小**
+4. `-XX:+HeapDumpOnOutOfMemoryError`	--> **设置内存溢出时 Dump 堆**
+5. `-Xss`	--> **设置栈容量**
+6. ~~`-Xoss`~~	--> **设置本地方法栈大小**
+7. ~~`-XX:PermSize`~~	--> **设置 JVM 初始方法区的大小，JDK1.7开始逐步去永久代**
+8. ~~`-XX:MaxPermSize`~~	--> **设置 JVM 方法区的最大大小，JDK1.7开始逐步去永久代**
+9. `-XX:MaxDirectMemorySize`	--> **设置 JVM 本机直接内存的最大大小**
+10. `-XX:+PrintGC` --> **输出GC日志**
+11. `-XX:+PrintGCDetails` --> **输出GC的详细日志**
+12. `-XX:+PrintGCTimeStamps` --> **输出GC的时间戳（以基准时间的形式）**
+13. `-XX:+PrintGCDateStamps` --> **输出GC的时间戳（以日期的形式，如 2013-05-04T21:53:59.234+0800）**
+14. `-XX:+PrintHeapAtGC` --> **在进行GC的前后打印出堆的信息**
+15. `-XX:+UseSerialGC` --> **使用 Serial + Serial Old 收集器组合**
+16. `-XX:+UseParNewGC` --> **使用 ParNew + Serial Old 收集器组合**
+17. `-XX:+UseConcMarkSweepGC` --> **使用 ParNew + CMS + Serial Old 收集器组合**
+18. `-XX:+UseParallelGC` --> **使用 PS + Serial Old 收集器组合**
+19. `-XX:+UseParallelOldGC` --> **使用 PS + PS Old 收集器组合**
+20. `-XX:SurvivorRatio` --> **设置 Eden 与 Survivor 比例，默认为8（指8:1）**
+21. `-XX:PretenureSizeThreshold` --> **直接晋升到老年代的对象大小（单位：字节）**
+22. `-XX:MaxTenuringThreshold` --> **晋升到老年代的对象年龄，默认15**
+23. `-XX:UseAdaptiveSizePolicy` --> **动态调整Java堆中各个区域的大小以及进入老年代的年龄**
+24. ~~`-XX:+/-HandlePromotionFailure`~~ --> **设置是否允许分配担保失败**
+25. `-XX:ParallelGCThreads` --> **设置并行 GC 的线程数**
+26. `-XX:GCTimeRatio` --> **GC时间占总时间的比率，默认值为99，只在使用 PS 收集器时生效**
+27. `-XX:MaxGCPauseMillis` --> **设置GC的最大停顿时间，只在使用 PS 收集器时生效**
+28. `-XX:CMSInitiatingOccupancyFraction` --> **CMS收集器在老年代空间被使用多少后触发垃圾收集，默认值为68%，只在使用 CMS 收集器时生效**
+29. `-XX:UseCMSCompactAtFullCollection` --> **设置CMS收集器在完成垃圾收集后是否要进行一次内存碎片整理**
+30. `-XX:CMSFullGCsBeforeCompaction` --> **设置CMS收集器在进行若干此垃圾收集后再启动一次内存碎片整理**
+31. `-verbose:gc` --> **等价于 -XX:+PrintGC**
