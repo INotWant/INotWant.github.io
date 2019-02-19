@@ -41,3 +41,16 @@ description: JVM 参数笔记
 29. `-XX:UseCMSCompactAtFullCollection` --> **设置CMS收集器在完成垃圾收集后是否要进行一次内存碎片整理**
 30. `-XX:CMSFullGCsBeforeCompaction` --> **设置CMS收集器在进行若干此垃圾收集后再启动一次内存碎片整理**
 31. `-verbose:gc` --> **等价于 -XX:+PrintGC**
+32. `-Dcom.sun.management.jmxremote`	--> **使 JDK1.5 虚拟机开启 JMX（`Java Management Extensions`） 管理功能，更高版本默认开启**
+33. `-XX:+HeapDumpOnCtrlBreak` --> **设置使用[Ctrl]+[Break]键让虚拟机生产 dump 文件**
+34. ~~`-Xcomp`~~	--> **让虚拟机以编译模式执行代码**
+35. `-XX:PrintAssembly`	--> **输出反编译内容**
+36. `-Xshare:off`	--> **关闭类共享优化，在使用 visualvm-profiler 分析时可以用到**
+37. `-XX:+PrintFlagsFinal`	--> **查看 JVM 所有参数的值，需要 JDK6 及以上**
+38. `-XX:+DisableExplicitGC`	--> **屏蔽明确GC，如 System.gc()**
+39. `-XX:+AlwaysTenure`	--> **表示没有幸存区，所有对象在第一次 GC 时，会晋升到老年代**
+40. `-XX:+NeverTenure`	--> **对象永远不会晋升到老年代，可能不起作用**
+41. `-Dsun.awt.keepWorkingSetOnMinimize=true`	--> **避免 awt 程序在最小化时工作内存被交换至磁盘文件中**
+42. `-Xverify:none`	--> **禁止字节码校验过程**
+43. `-Xint`	--> **禁止 JIT 编译器运作**
+44. `-Xnoclassgs`	--> **关闭 Class 的垃圾回收**
