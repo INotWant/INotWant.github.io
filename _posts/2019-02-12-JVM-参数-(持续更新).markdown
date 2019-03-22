@@ -52,5 +52,20 @@ description: JVM 参数笔记
 40. `-XX:+NeverTenure`	--> **对象永远不会晋升到老年代，可能不起作用**
 41. `-Dsun.awt.keepWorkingSetOnMinimize=true`	--> **避免 awt 程序在最小化时工作内存被交换至磁盘文件中**
 42. `-Xverify:none`	--> **禁止字节码校验过程**
-43. `-Xint`	--> **禁止 JIT 编译器运作**
+43. `-Xint`	--> **禁止 JIT 编译器运作，即运行在解释模式**
 44. `-Xnoclassgs`	--> **关闭 Class 的垃圾回收**
+45. `-server`	--> **强制虚拟机运行在 Server 模式，使用 C2 编译器**
+46. `-client`	--> **强制虚拟机运行在 Client 模式，使用 C1 编译器**
+47. `-CompileThreshold`	--> **触发 JIT 的阈值**
+48. `-XX:-UseCounterDecay` --> **设置关闭热度衰减，让方法计数器统计方法调用的绝对次数**
+49. `-XX:CounterHalfLifeTime` --> **设置半衰周期的时间，单位为秒。[与方法计数器相关]**
+50. `-XX:BackEdgeThreshold` --> **设置回边计数器的阈值，实际未使用**
+51. `-XX:OnStackReplacePerentage`	--> **调整回边计数器的阈值，OSR 比率**
+52. `-XX:-BackgroundCompilation`	--> **禁止后台编译，一旦触发 JIT，则等待其编译完成再继续运行**
+53. `-XX:+PrintCompilation`	--> **打印出被即时编译的方法名称**
+54. `-XX:+PrintInlining`	--> **打印方法内联信息**
+55. `-XX:+PrintOptoAssembly`	--> **针对 Server VM(notproduct)，输出 JIT 编译中间代码**
+56. `-XX:+PrintLIR`	--> **针对 Client VM(notproduct)，输出 JIT 编译中间代码**
+57. `-XX:+PrintCFGToFile` --> **针对 Client VM(debug)，输出编译过程中各个阶段的数据**
+58. `-XX:+PrintIdealGraphFile` --> **针对 Server VM(debug)，输出编译过程中各个阶段的数据**
+
