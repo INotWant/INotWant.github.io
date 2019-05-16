@@ -1,0 +1,14 @@
+---
+title: "友情链接"
+layout: post
+date: 2048-10-24 00:00
+tag: other
+category: Other
+author: inotwant
+description: 友情链接
+---
+
+## 友情链接
+
+- [半天钟的博客 Btz's Blog](https://halfclock.github.io/)
+- [zhang99969's Blog](https://zhang99969.github.io/)
