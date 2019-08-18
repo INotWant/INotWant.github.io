@@ -10,6 +10,10 @@ author: inotwant
 description: CRF 做中文分词
 ---
 
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 ### 概要
 
 1. 简述 `CRF`
